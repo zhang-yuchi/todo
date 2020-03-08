@@ -16,6 +16,10 @@ const config = {
                 loader: 'vue-loader',
             },
             {
+                test: /.jsx$/,
+                loader: 'babel-loader',
+            },
+            {
                 test: /.css$/,
                 use: [
                     'style-loader',
@@ -27,6 +31,12 @@ const config = {
                 use: [
                     'style-loader',
                     'css-loader',
+                    {
+                        loader:"postcss-loader",
+                        options:{
+                            sourceMap:true//直接使用已经生成的source 效率更高
+                        }
+                    },
                     'stylus-loader',
                 ]
             },
@@ -41,6 +51,10 @@ const config = {
                     }
 
                 ]
+            },
+            {
+                test:/\.(ttf|woff)$/,
+                loader:"url-loader"
             }
         ]
     },
