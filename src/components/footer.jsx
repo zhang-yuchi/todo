@@ -8,7 +8,6 @@ export default {
         return (
             <div id="footer">
                 <span>Written by {this.author}</span>
-                <el-input></el-input>
             </div>
         )
     }

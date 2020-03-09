@@ -1,6 +1,10 @@
 <!--  -->
 <template>
-<div class=''></div>
+<div class='item'>
+    <input type="checkbox" v-model="todos.completed" class="select">
+    <div class="item-text">{{todos.content}}</div>
+    <span class="del" @click="deleteItem">x</span>
+</div>
 </template>
 
 <script>
@@ -10,6 +14,12 @@
 export default {
 //import引入的组件需要注入到对象中才能使用
 components: {},
+props:{
+    todos:{
+        type:Object,
+        default:[]
+    }
+},
 data() {
 //这里存放数据
 return {
@@ -22,7 +32,9 @@ computed: {},
 watch: {},
 //方法集合
 methods: {
-
+deleteItem(){
+    this.$emit('deleteitem',this.todos.id)
+}
 },
 //生命周期 - 创建完成（可以访问当前this实例）
 created() {
@@ -43,5 +55,20 @@ deactivated() {}, //如果有keep-alive缓存功能,当该页面撤销使这个�
 }
 </script>
 <style scoped>
-
+.item-text{
+    /* float: left; */
+    display: inline-block;
+}
+.select:checked + .item-text{
+    color: gray;
+    text-decoration: line-through;
+}
+.del{
+    float: right;
+    cursor: pointer;
+    display: none;
+}
+.item:hover .del{
+    display: block;
+}
 </style>

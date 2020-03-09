@@ -1,7 +1,8 @@
 <!--  -->
 <template>
-<div id="app">{{test}}
-    <!-- <el-input></el-input> -->
+<div id="app">
+    <todoHeader></todoHeader>
+    <to-do></to-do>
     <todoFooter></todoFooter>
 </div>
 </template>
@@ -11,10 +12,13 @@
 //例如：import 《组件名称》 from '《组件路径》';
 import todoFooter from './components/footer.jsx'
 import todoHeader from './components/header.vue'
+import toDo from './components/todo.vue'
 export default {
 //import引入的组件需要注入到对象中才能使用
 components: {
     todoFooter,
+    todoHeader,
+    toDo,
 },
 data() {
 //这里存放数据
